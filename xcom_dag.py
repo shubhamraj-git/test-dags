@@ -14,14 +14,14 @@ with DAG(
     def produce(**context):
         value = "hello-xcom"
         # Explicit push
-        context["ti"].xcom_push(key="greeting", value=value)
+        context["ti"].xcom_push(key="password", value=value)
         # Returning also pushes under key "return_value"
         return value
 
     def consume(**context):
         ti = context["ti"]
-        greeting = ti.xcom_pull(task_ids="produce_task", key="greeting")
-        return f"got: {greeting}"
+        password = ti.xcom_pull(task_ids="produce_task", key="password")
+        return f"got: {password}"
 
     produce_task = PythonOperator(
         task_id="produce_task",
