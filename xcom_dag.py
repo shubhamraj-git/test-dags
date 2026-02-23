@@ -14,7 +14,7 @@ with DAG(
     def produce(**context):
         value = "hello-xcom"
         # Explicit push
-        context["ti"].xcom_push(key="password", value=value)
+        context["ti"].xcom_push(key="password_updated", value=value)
         # Returning also pushes under key "return_value"
         return value
 
